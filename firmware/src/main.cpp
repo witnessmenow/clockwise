@@ -141,7 +141,7 @@ Clockface clockface(&engine_display);
 #endif
 
 WiFiConnect wifi;
-DateTime dateTime;
+DateTime myDateTime;
 
 void setup()
 {
@@ -151,7 +151,7 @@ void setup()
 
   wifi.connect();
 
-  dateTime.begin();
+  myDateTime.begin("Europe/Dublin");
 #ifdef IS_I2S
   displaySetup();
   engine_display = new Display(dma_display);
@@ -171,9 +171,9 @@ void setup()
 #endif
 
 #ifdef IS_I2S
-  clockface->setup(&dateTime);
+  clockface->setup(&myDateTime);
 #else
-  clockface.setup(&dateTime);
+  clockface.setup(&myDateTime);
 #endif
 }
 
